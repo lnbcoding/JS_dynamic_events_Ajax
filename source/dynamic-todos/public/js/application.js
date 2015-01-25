@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 function bindEvents() {
     $("form").on("submit", addTodo)
-
+    $(".todo_list").on("click", ".delete", deleteTodo)
 }
 
 function buildTodo(todoName) {
@@ -29,5 +29,17 @@ function addTodo() {
         data: $target.serialize()
     }).done(function(serverResponse) {
         $(".todo_list").append(buildTodo(serverResponse.todo_content))
+    })
+};
+
+function deleteTodo() {
+    event.preventDefault();
+    var $target = $(this); // which equals $(event.target) jquery object
+    var $targetList = $(this).closest("div");
+    $.ajax({
+        type: 'DELETE',
+        url: $target.attr('href')
+    }).done(function() {
+        $targetList.remove();
     })
 };
