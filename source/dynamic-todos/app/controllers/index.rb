@@ -8,3 +8,7 @@ post '/add_todo' do
   { todo_content: params[:content_info] }.to_json if new_todo.save
 end
 
+delete '/todos/:id' do
+  todo = Todo.find(params[:id])
+  todo.destroy
+end
