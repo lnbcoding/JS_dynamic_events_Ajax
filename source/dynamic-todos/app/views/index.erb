@@ -8,7 +8,15 @@
   </div>
 
   <div class="todo_list">
-
+    <% @todos.each do |todo_object| %>
+        <div class="todo">
+          <h2><%= todo_object.todo_content %></h2>
+          <ul>
+            <li><a href="/todos/<%= todo_object.id %>" class="delete">Delete</a></li>
+            <li><a href="/todos/<%= todo_object.id %>" class="complete">Complete</a></li>
+          </ul>
+        </div>
+    <% end %>
   </div>
 
   <div id="todo_template" style="display: none;">
