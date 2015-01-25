@@ -2,10 +2,10 @@ $(document).ready(function() {
     bindEvents();
 });
 
-
 function bindEvents() {
     $("form").on("submit", addTodo)
     $(".todo_list").on("click", ".delete", deleteTodo)
+    $(".todo_list").on("click", ".complete", completeTodo)
 }
 
 function buildTodo(todoName) {
