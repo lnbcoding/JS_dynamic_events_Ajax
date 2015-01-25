@@ -8,6 +8,12 @@
   text-align: center;
 }
 
+/*Somehow cannot target this selector so I created a new class of complete_todo*/
 .todo.complete h2 {
   text-decoration: line-through;
+}
+
+.complete_todo {
+    text-decoration: line-through;
+    color: red;
 }
