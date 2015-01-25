@@ -21,7 +21,7 @@ function buildTodo(todoName) {
 
 function addTodo() {
     event.preventDefault();
-    var $target = $(event.target) // which equals $(this) jquery object
+    var $target = $(event.target); // which equals $(this) jquery object
     $.ajax({
         type: $target.attr("method"),
         url: $target.attr("action"),
@@ -41,5 +41,18 @@ function deleteTodo() {
         url: $target.attr('href')
     }).done(function() {
         $targetList.remove();
+    })
+};
+
+function completeTodo() {
+    event.preventDefault();
+    var $target = $(event.target)
+    var $targetList = $target.closest("div").find("h2")
+    console.log($targetList)
+    $.ajax({
+        type: "PUT",
+        url: $target.attr("href")
+    }).done(function() {
+        $targetList.addClass("complete_todo")
     })
 };
