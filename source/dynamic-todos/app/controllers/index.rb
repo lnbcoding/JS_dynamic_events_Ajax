@@ -12,3 +12,8 @@ delete '/todos/:id' do
   todo = Todo.find(params[:id])
   todo.destroy
 end
+
+put '/todos/:id' do
+  todo = Todo.find(params[:id])
+  todo.update_attributes(completed: true)
+end
