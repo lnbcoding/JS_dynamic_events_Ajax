@@ -19,4 +19,15 @@ function buildTodo(todoName) {
   return $todo;
 }
 
-//Create functions to add, remove and complete todos
+function addTodo() {
+  event.preventDefault();
+  var $target = $(event.target) // which equals $(this) jquery object
+  $.ajax({
+    type: $target.attr("method"),
+    url: $target.attr("action"),
+    dataType: "json",
+    data: $target.serialize()
+  }).done(function(serverResponse) {
+    $(".todo_list").append(buildTodo(serverResponse.todo_content))
+  })
+};
